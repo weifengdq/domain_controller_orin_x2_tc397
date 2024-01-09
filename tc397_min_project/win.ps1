@@ -36,7 +36,6 @@ function Clean {
   }
 }
 
-
 function Help {
   Write-Host "Usage: win.ps1 [command]"
   Write-Host "Commands:"

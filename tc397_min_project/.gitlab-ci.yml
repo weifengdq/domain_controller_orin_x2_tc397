@@ -1,0 +1,21 @@
+stages:
+  - build
+
+tasking_build:
+  tags:
+    - 这里填入服务器设置的tag
+  stage: build
+  only:
+    - tags
+  script:
+    - export TSK_LICENSE_KEY_SWxxxx=xxxx-xxxx-xxxx-xxxx
+    - export TSK_LICENSE_SERVER="<ip>:<port>"
+    - export TOOLCHAIN_ROOT=/opt/Tasking/TriCore6.3r1/ctc
+    - cmake -B build -DCMAKE_TOOLCHAIN_FILE=tasking_tricore.cmake -G 'Unix Makefiles' .
+    - cmake --build build -j$(nproc)
+  artifacts:
+    paths:
+      - build
+    expire_in: '60'
+    when: on_success
+  allow_failure: false
