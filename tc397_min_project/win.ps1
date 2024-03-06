@@ -15,7 +15,7 @@ function Build {
   
   cmake -B build -G "MinGW Makefiles" .
   $totalLogicalCores = ( `
-    (Get-CimInstance –ClassName Win32_Processor).NumberOfLogicalProcessors | `
+    (Get-CimInstance -ClassName Win32_Processor).NumberOfLogicalProcessors | `
       Measure-Object -Sum `
   ).Sum
   cmake --build build -- -j $totalLogicalCores
