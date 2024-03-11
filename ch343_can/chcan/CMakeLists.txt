@@ -3,6 +3,7 @@ project(chcan LANGUAGES CXX)
 
 add_executable(${PROJECT_NAME} main.cpp)
 
+# https://github.com/cpm-cmake/CPM.cmake
 include(CPM.cmake)
 
 # https://github.com/chriskohlhoff/asio
