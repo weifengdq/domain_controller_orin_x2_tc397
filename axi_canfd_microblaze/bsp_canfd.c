@@ -147,8 +147,9 @@ int bsp_canfd_init(XCanFd *InstancePtr, uint32_t BaseAddress, uint32_t BaudRate,
   // XCanFd_Set_Tranceiver_Delay_Compensation(InstancePtr, 0x3);
 
   XCanFd_SetBitRateSwitch_DisableNominal(InstancePtr);
-  bsp_canfd_debug_printf("XCanFd: %d@%.3f, %d@%.3f\n", BaudRate, SamplePoint,
-                         FastBaudRate, FastSamplePoint);
+  bsp_canfd_debug_printf("XCanFd: %d@0.%d, %d@0.%d\n", BaudRate,
+                         (int)(SamplePoint * 1000), FastBaudRate,
+                         (int)(FastSamplePoint * 1000));
 
   if (XCANFD_GET_RX_MODE(InstancePtr) == 0) {
     bsp_canfd_debug_printf(
